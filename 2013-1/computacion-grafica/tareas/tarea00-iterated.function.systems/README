@@ -1,0 +1,13 @@
+compilar con los siguientes comandos (los parametros numericos se pueden variar)
+
+DRAGON:
+./ifs -input input-files/dragon.txt -points 50000 -iters 50 -size 1000 1000 -output output-files/dragon.tga
+
+FERN
+./ifs -input input-files/fern.txt -points 50000 -iters 50 -size 1000 1000 -output output-files/fern.tga
+
+GIANT_X
+./ifs -input input-files/giant_x.txt -points 50000 -iters 50 -size 1000 1000 -output output-files/giant_x.tga
+
+SIERPINSKI_TRIANGLE
+./ifs -input input-files/sierpinski_triangle.txt -points 50000 -iters 50 -size 1000 1000 -output output-files/sierpinski_triangle.tga

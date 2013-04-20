@@ -6,17 +6,17 @@
 inline float aleat() { return (float)rand()/(float)RAND_MAX; }
 
 IFS::IFS() {
-	this->n = 0;
-	this->m = NULL;
+    this->n = 0;
+    this->m = NULL;
 }
 
 IFS::~IFS() {
-	delete this->m;
+    delete this->m;
 }
 
 void IFS::inicializarIFS(int nro, Matrix *mat) {
-	this->n = nro;
-	this->m = mat;
+    this->n = nro;
+    this->m = mat;
 }
 
 void IFS::render(Image *img, int nro_ptos, int nro_its, char *output_file, float *probs) {
@@ -41,8 +41,8 @@ void IFS::render(Image *img, int nro_ptos, int nro_its, char *output_file, float
             // asigna la misma probabilidad. En ese caso eliminamos el 'for'
             // anterior y lo reemplazamos con una sola sentencia:
             // i = rand() % n   //genera un numero entero entre 0 y n-1.
-            this->m[i].Transform(p);	// Transforma el punto 'p' de acuerdo a
-            							// la matriz de transformacion m[i].
+            this->m[i].Transform(p);    // Transforma el punto 'p' de acuerdo a
+                                        // la matriz de transformacion m[i].
         }
         float x, y, z, w;       // Las cordenadas de 'p' luego de n ...  
         p.Get(x, y, z, w);      // transformaciones (solo importan x e y).
@@ -57,5 +57,5 @@ void IFS::render(Image *img, int nro_ptos, int nro_its, char *output_file, float
 }
 
 int IFS::getN() {
-	return this->n;
+    return this->n;
 }

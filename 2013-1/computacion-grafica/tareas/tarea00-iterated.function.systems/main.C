@@ -29,11 +29,11 @@ int main(int argc, char **argv) {
             i++; assert (i < argc); 
             input_file = argv[i];
         } else if (!strcmp(argv[i],"-points")) {
-        	i++; assert (i<argc);
-        	points = atoi(argv[i]);
+            i++; assert (i<argc);
+            points = atoi(argv[i]);
         } else if (!strcmp(argv[i],"-iters")) {
-        	i++; assert (i<argc);
-        	iters = atoi(argv[i]);
+            i++; assert (i<argc);
+            iters = atoi(argv[i]);
         } else if (!strcmp(argv[i],"-size")) {
             i++; assert (i < argc); 
             width = atoi(argv[i]);
@@ -74,17 +74,17 @@ int main(int argc, char **argv) {
         source >> probs[i];         // Lee la probabilidad de transformacion.
         acum += probs[i];           // Acumula
         probs[i] = acum;            // Cambia la prob. absoluta por acumulada.
-        leer_matriz(source, v);		// Lee y guarda la matriz linealmente en v
+        leer_matriz(source, v);     // Lee y guarda la matriz linealmente en v
         m[i] = *(new Matrix(v));    // Crea la matriz basado en 'v'.
     }
 
     /*************************************************************************
-	 * MAIN
-	 *************************************************************************/
-	IFS *ifs = new IFS();
-	Image *img = new Image(width, height);
-	ifs->inicializarIFS(n, m);
-	ifs->render(img, points, iters, output_file, probs);
+     * MAIN
+     *************************************************************************/
+    IFS *ifs = new IFS();
+    Image *img = new Image(width, height);
+    ifs->inicializarIFS(n, m);
+    ifs->render(img, points, iters, output_file, probs);
 }
 
 /*****************************************************************************
