@@ -15,12 +15,9 @@
 #ifndef GROUP_H_
 #define GROUP_H_
 
-#include <vector>
 #include "object3d.h"
 #include "supporting-files/ray.h"
 #include "supporting-files/hit.h"
-
-using std::vector;
 
 class Group : public Object3D {
 
@@ -38,7 +35,7 @@ public:
     virtual bool intersect(const Ray &r, Hit &h, float tmin);
     
     // Public members
-    vector< *Object3D > arr;
+    Object3D **arr;
     
 private:
     int n;
