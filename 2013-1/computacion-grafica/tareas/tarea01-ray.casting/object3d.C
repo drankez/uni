@@ -18,9 +18,9 @@
  * - a color field, and
  * - a pure virtual intersection method
  ********************************************************************/
- 
+
 #include "object3d.h"
-#include "supporting-files/vectors.h"
+#include "vectors.h"
 
 // Constructor
 Object3D::Object3D() {
@@ -30,12 +30,8 @@ Object3D::Object3D() {
 // Destructor
 Object3D::~Object3D() {}
 
-// Getter
-Vec3f Object3D::getColor() {
-    return color;
-}
-
-// Setter
+// Getter and Setter
+Vec3f Object3D::getColor() { return color; }
 void Object3D::setColor(float r, float g, float b) {
     color = Vec3f(r, g, b);
 }

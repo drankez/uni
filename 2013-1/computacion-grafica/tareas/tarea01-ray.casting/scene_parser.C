@@ -11,9 +11,10 @@
 #include "object3d.h"
 #include "group.h" 
 #include "sphere.h"
-#include "plane.h"
-#include "triangle.h"
-#include "transform.h"
+#include "orthocamera.h"
+//#include "plane.h"
+//#include "triangle.h"
+//#include "transform.h"
 //#include "box.h"
 
 #define DegreesToRadians(x) ((M_PI * x) / 180.0f)
@@ -56,8 +57,8 @@ void SceneParser::initialize() {
   group = NULL;
   camera = NULL;
   background_color = Vec3f(0.5,0.5,0.5);
-  lights = NULL;
-  num_lights = 0;
+  //lights = NULL;
+  //num_lights = 0;
   current_object_color = Vec3f(1,1,1);
   file = NULL;
 }
@@ -76,11 +77,11 @@ void SceneParser::parseFile() {
     if (!strcmp(token, "OrthographicCamera")) {
       parseOrthographicCamera();
     } else if (!strcmp(token, "PerspectiveCamera")) {
-      parsePerspectiveCamera();
+      //parsePerspectiveCamera();
     } else if (!strcmp(token, "Background")) {
       parseBackground();
     } else if (!strcmp(token, "Lights")) {
-      parseLights();
+      //parseLights();
     } else if (!strcmp(token, "Group")) {
       group = parseGroup();
     } else {
@@ -102,7 +103,7 @@ Group* SceneParser::parseGroup() {
   getToken(token); assert (!strcmp(token, "{"));
 
   // read in the number of objects
-  getToken(token); assert (!strcmp(token, "numObjects"));
+  getToken(token); assert (!strcmp(token, "num_objects"));
   int num_objects = readInt();
 
   Group *answer = new Group(num_objects);
@@ -136,7 +137,7 @@ Object3D* SceneParser::parseObject(char token[MAX_PARSER_TOKEN_LENGTH]) {
     answer = (Object3D*)parseGroup();
   } else if (!strcmp(token, "Sphere")) {      
     answer = (Object3D*)parseSphere();
-  } else if (!strcmp(token, "Box")) {      
+  } else /*if (!strcmp(token, "Box")) {      
     //answer = (Object3D*)parseBox();
   } else if (!strcmp(token, "Plane")) {      
     answer = (Object3D*)parsePlane();
@@ -146,7 +147,7 @@ Object3D* SceneParser::parseObject(char token[MAX_PARSER_TOKEN_LENGTH]) {
     answer = (Object3D*)parseTriangleMesh();
   } else if (!strcmp(token, "Transform")) {      
     answer = (Object3D*)parseTransform();
-  } else {
+  } else*/ {
     printf ("Unknown token in parseObject: '%s'\n", token);
     exit(0);
   }
@@ -156,7 +157,7 @@ Object3D* SceneParser::parseObject(char token[MAX_PARSER_TOKEN_LENGTH]) {
 
 // ====================================================================
 // ====================================================================
-
+/*
 void SceneParser::parseLights() {
   char token[MAX_PARSER_TOKEN_LENGTH];
   getToken(token); assert (!strcmp(token, "{"));
@@ -191,11 +192,11 @@ void SceneParser::parseLights() {
   }
   getToken(token); assert (!strcmp(token, "}"));
 }
-
+*/
 // ====================================================================
 // ====================================================================
 
-void SceneParser::parseOrthographicCamera() {
+Camera * SceneParser::parseOrthographicCamera() {
   char token[MAX_PARSER_TOKEN_LENGTH];
 
   // read in the camera parameters
@@ -211,32 +212,34 @@ void SceneParser::parseOrthographicCamera() {
   getToken(token); assert (!strcmp(token, "}"));
 
   camera = new OrthographicCamera(center,direction,up,size);
+  
+  return camera;
 }
 
 
-void SceneParser::parsePerspectiveCamera() {
+/*void SceneParser::parsePerspectiveCamera() {
   char token[MAX_PARSER_TOKEN_LENGTH];
 
   // read in the camera parameters
   getToken(token); assert (!strcmp(token, "{"));
   getToken(token); assert (!strcmp(token, "center"));
-  Vec3f center = readVec3f();
+  //Vec3f center = readVec3f();
   getToken(token); assert (!strcmp(token, "direction"));
-  Vec3f direction = readVec3f();
+  //Vec3f direction = readVec3f();
   getToken(token); assert (!strcmp(token, "up"));
-  Vec3f up = readVec3f();
+  //Vec3f up = readVec3f();
   getToken(token); assert (!strcmp(token, "angle"));
-  float angle_degrees = readFloat();
-  float angle_radians = DegreesToRadians(angle_degrees);
+  //float angle_degrees = readFloat();
+  //float angle_radians = DegreesToRadians(angle_degrees);
   getToken(token); assert (!strcmp(token, "}"));
 
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++
   // CALLING ASSIGNMENT 2 CODE
   // create a new perspective camera and return it
-  camera = new PerspectiveCamera(center,direction,up,angle_radians);
+  //camera = new PerspectiveCamera(center,direction,up,angle_radians);
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
-
+*/
 
 void SceneParser::parseBackground() {
   char token[MAX_PARSER_TOKEN_LENGTH];
@@ -249,7 +252,7 @@ void SceneParser::parseBackground() {
     } else if (!strcmp(token, "color")) {
       background_color = readVec3f();
     } else if (!strcmp(token, "ambientLight")) {
-      ambient_light = readVec3f();
+      //ambient_light = readVec3f();
     } else {
       printf ("Unknown token in parseBackground: '%s'\n", token);
       assert(0);
@@ -307,7 +310,7 @@ Box* SceneParser::parseBox() {
 }
 
 */
-
+/*
 Plane* SceneParser::parsePlane() {
   char token[MAX_PARSER_TOKEN_LENGTH];
 
@@ -486,7 +489,7 @@ Transform* SceneParser::parseTransform() {
   return new Transform(matrix, object);
   // ++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
-
+*/
 
 // ====================================================================
 // ====================================================================

@@ -30,9 +30,9 @@
 #define SPHERE_H_
 
 #include "object3d.h"
-#include "supporting-files/vectors.h"
-#include "supporting-files/hit.h"
-#include "supporting-files/ray.h"
+#include "vectors.h"
+#include "hit.h"
+#include "ray.h"
 
 class Sphere : public Object3D {
 

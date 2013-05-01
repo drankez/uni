@@ -12,9 +12,15 @@
  *          void addObject(int index, Object3D *obj)
  *******************************************************************/
 
+#include "group.h"
+#include "object3d.h"
+#include "ray.h"
+#include "hit.h"
+ 
 // Constructor
 Group::Group(int _n) {
     n = _n;
+    arr = new Object3D*[n];
 }
 
 //Destructor
@@ -30,4 +36,17 @@ int Group::getN() { return n; }
 /********************************************************************
  * FUNCTION : addObject
  ********************************************************************/
- 
+void Group::addObject(int index, Object3D *obj) {
+    arr[index] = obj;
+}
+
+/********************************************************************
+ * FUNCTION : intersect
+ ********************************************************************/
+bool Group::intersect(const Ray &r, Hit &h, float tmin) {
+    bool ans = false;
+    for (int i=0; i<n; i++) {
+        ans = ans || arr[i]->intersect(r, h, tmin);
+    }
+    return ans;
+}

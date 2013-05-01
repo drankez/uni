@@ -2,10 +2,11 @@
 #define _SceneParser_H_
 
 #include "vectors.h"
-
-class Group;
-class Camera;
-class Sphere;
+#include "object3d.h"
+#include "sphere.h"
+#include "group.h"
+#include "camera.h"
+#include "orthocamera.h"
 
 #define MAX_PARSER_TOKEN_LENGTH 100
 
@@ -25,6 +26,10 @@ public:
   Group* getGroup() { return group; }
   Camera* getCamera() { return camera; }
   Vec3f getBackgroundColor() { return background_color; }
+  int readInt();
+  float readFloat();
+  Vec3f readVec3f();
+  Object3D* parseObject(char *token);
 
 private:
 

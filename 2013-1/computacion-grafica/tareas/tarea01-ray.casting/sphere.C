@@ -27,11 +27,12 @@
  ********************************************************************/
 
 #include <cmath>
+#include <iostream>
 
 #include "sphere.h"
-#include "supporting-files/vectors.h"
-#include "supporting-files/hit.h"
-#include "supporting-files/ray.h"
+#include "vectors.h"
+#include "hit.h"
+#include "ray.h"
 
 using namespace std;
 
@@ -67,15 +68,14 @@ bool Sphere::intersect(const Ray &r, Hit &h, float tmin) {
     const Vec3f orig = r.getOrigin();
     Vec3f or_c = center - orig;
     float tp = or_c.Dot3(r.getDirection());
-    float d2 = or_c.Dot3(or_c) - tp*tp;
-    float t1 = (float) sqrt(radius*radius - d2);
-    
     if (tp < 0) {
         return false;
     }
+    float d2 = or_c.Dot3(or_c) - tp*tp;
     if (d2 > radius*radius) {
         return false;
     }
+    float t1 = (float) sqrt(radius*radius - d2);
     if ( or_c.Length() < radius ) {
         inside = true;
     }
@@ -90,5 +90,6 @@ bool Sphere::intersect(const Ray &r, Hit &h, float tmin) {
     Vec3f normal = r.pointAtParameter(t) - center;
     normal.Normalize();
     h.set(t, NULL, normal, r);
+    h.setColor(getColor());
     return true;
 }

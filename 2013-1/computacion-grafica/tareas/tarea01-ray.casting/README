@@ -1,0 +1,9 @@
+Ejecutar uno de los siguientes comandos:
+
+./raycast -input input-files/scene1.txt -size 100 100 -output output-files/scene1.tga
+
+./raycast -input input-files/scene2.txt -size 100 100 -output output-files/scene2.tga
+
+./raycast -input input-files/scene3.txt -size 100 100 -output output-files/scene3.tga
+
+./raycast -input input-files/scene4.txt -size 100 100 -output output-files/scene4.tga

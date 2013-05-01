@@ -16,8 +16,8 @@
 #define GROUP_H_
 
 #include "object3d.h"
-#include "supporting-files/ray.h"
-#include "supporting-files/hit.h"
+#include "ray.h"
+#include "hit.h"
 
 class Group : public Object3D {
 
@@ -28,10 +28,10 @@ public:
     ~Group();
     
     // Getters and Setters
-    int getN() { return n; }
+    int getN();
     
     // Methods
-    void addObject(int index, Object3D *obj)
+    void addObject(int index, Object3D *obj);
     virtual bool intersect(const Ray &r, Hit &h, float tmin);
     
     // Public members
@@ -41,4 +41,4 @@ private:
     int n;
 };
 
-#endif GROUP_H_
+#endif

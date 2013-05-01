@@ -25,7 +25,10 @@ public:
   ~Hit() {}
 
   // ACCESSORS
+  Vec3f getColor() { return color; };
+  void setColor( Vec3f co ) { color = co; };
   float getT() const { return t; }
+  void setT(float _t) { t = _t; }
   Material* getMaterial() const { return material; }
   Vec3f getNormal() const { return normal; }
   Vec3f getIntersectionPoint() const { return intersectionPoint; }
@@ -42,6 +45,7 @@ private:
   Material *material;
   Vec3f normal;
   Vec3f intersectionPoint;
+  Vec3f color;
 
 };
 

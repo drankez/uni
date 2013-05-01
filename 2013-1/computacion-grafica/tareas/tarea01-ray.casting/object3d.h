@@ -22,8 +22,8 @@
 #ifndef OBJECT3D_H_
 #define OBJECT3D_H_
  
-#include "supporting-files/ray.h"
-#include "supporting-files/hit.h"
+#include "ray.h"
+#include "hit.h"
  
 class Object3D {
 
